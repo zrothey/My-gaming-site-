@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GameZone - Gaming Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+      border-bottom: 1px solid #333;
+    }
+    h2 {
+      color: #00ffea;
+    }
+    .game-list, .news-list {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+    }
+    .game-item, .news-item {
+      background: #222;
+      padding: 15px;
+      min-width: 200px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    iframe {
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+      border: none;
+    }
+    a {
+      color: #00ffea;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>GameZone</header>
+
+  <section id="news">
+    <h2>Latest News</h2>
+    <div class="news-list" id="news-list">
+      <!-- News items will appear here -->
+    </div>
+  </section>
+
+  <section id="games">
+    <h2>Featured Games</h2>
+    <div class="game-list" id="game-list">
+      <!-- Game items will appear here -->
+    </div>
+  </section>
+
+  <section id="streams">
+    <h2>Live Stream</h2>
+    <iframe
+      src="https://player.twitch.tv/?channel=shroud&parent=localhost"
+      height="360"
+      width="640"
+      allowfullscreen="true"
+      scrolling="no"
+      title="Twitch Stream"
+    ></iframe>
+  </section>
+
+  <script>
+    const newsData = [
+      { title: "New Game Release: Galactic Battle", summary: "Explore space in this epic game." },
+      { title: "Battle Royale Patch 1.2", summary: "New weapons and bug fixes included." },
+      { title: "Esports Tournament!", summary: "Register now and win real prizes!" }
+    ];
+
+    const gamesData = [
+      { name: "Space Shooter", description: "Classic arcade action.", link: "#" },
+      { name: "Puzzle Quest", description: "Solve puzzles to win.", link: "#" },
+      { name: "Race Master", description: "Speed up and win!", link: "#" }
+    ];
+
+    const newsList = document.getElementById('news-list');
+    newsData.forEach(news => {
+      const div = document.createElement('div');
+      div.className = 'news-item';
+      div.innerHTML = `<h3>${news.title}</h3><p>${news.summary}</p>`;
+      newsList.appendChild(div);
+    });
+
+    const gameList = document.getElementById('game-list');
+    gamesData.forEach(game => {
+      const div = document.createElement('div');
+      div.className = 'game-item';
+      div.innerHTML = `<h3>${game.name}</h3><p>${game.description}</p><a href="${game.link}">Play Now</a>`;
+      gameList.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
